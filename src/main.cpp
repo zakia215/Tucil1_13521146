@@ -85,6 +85,53 @@ string cardName(int cardValue) {
     return "None";
 }
 
+string cardType(int cardValue) {
+    switch (cardValue) {
+        case 1:
+            return "A";
+            break;
+        case 2:
+            return "2";
+            break;
+        case 3:
+            return "3";
+            break;
+        case 4:
+            return "4";
+            break;
+        case 5:
+            return "5";
+            break;
+        case 6:
+            return "6";
+            break;
+        case 7:
+            return "7";
+            break;
+        case 8:
+            return "8";
+            break;
+        case 9:
+            return "9";
+            break;
+        case 10:
+            return "10";
+            break;
+        case 11:
+            return "J";
+            break;
+        case 12:
+            return "Q";
+            break;
+        case 13:
+            return "K";
+            break;
+        default:
+            break;
+    }
+    return "None";
+}
+
 double getResult(double first, double second, char op) {
     if (first == 99999 || second == 99999) {
         return 99999;
@@ -275,7 +322,7 @@ string solve(int numArray[4]) {
 }
 
 bool isFileExist(string name) {
-    string testFilePath = "../test/" + name;
+    string testFilePath = "../test/" + name + ".txt";
     ifstream f(testFilePath.c_str());
     return f.good();
 }
@@ -388,7 +435,7 @@ int main() {
             cout << "Cards:\n";
             for (int i = 0; i < 4; i++) {
                 numValues[i] = rand() % 13 + 1;
-                cout << numValues[i] << " ";
+                cout << cardType(numValues[i]) << " ";
             }
             cout << endl;
         }
@@ -409,7 +456,7 @@ int main() {
                 cout << "Sorry, that file name is already taken.\nPlease enter another file name: ";
                 cin >> fileName;
             }
-            string filePath = "../test/" + fileName;
+            string filePath = "../test/" + fileName + ".txt";
             ofstream tempFile(filePath);
             tempFile << result;
             tempFile.close();
